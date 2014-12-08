@@ -8,10 +8,17 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>{ifset #title}{include title|striptags} | {/ifset}Nette Sandbox</title>
+	<title>{ifset #title}{include title|striptags} | {/ifset}GPX viewer and classifier</title>
+
+	<link rel="stylesheet" href="{$basePath}/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{$basePath}/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{$basePath}/leaflet/leaflet.css">
+	<link href="{$basePath}/miniupload/css/style.css" rel="stylesheet" />
 
 	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
 	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
+
+
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
 	{block head}{/block}
 </head>
@@ -19,14 +26,34 @@
 <body>
 	<script> document.documentElement.className+=' js' </script>
 
-	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+	<div id="map"></div>
 
+	<div class="flashes">
+	x<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+	</div>
+
+	<div class="container">
 	{include content}
+	</div>
+
 
 	{block scripts}
 	<script src="{$basePath}/js/jquery.js"></script>
 	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/leaflet/leaflet.js"></script>
 	<script src="{$basePath}/js/main.js"></script>
+
+	<script src="{$basePath}/bootstrap/js/bootstrap.min.js"></script>
+
+
+	<!-- mini upload -->
+	<script src="{$basePath}/miniupload/js/jquery.knob.js"></script>
+	<script src="{$basePath}/miniupload/js/jquery.ui.widget.js"></script>
+	<script src="{$basePath}/miniupload/js/jquery.iframe-transport.js"></script>
+	<script src="{$basePath}/miniupload/js/jquery.fileupload.js"></script>
+	<script src="{$basePath}/miniupload/js/script.js"></script>
+
+
 	{/block}
 </body>
 </html>

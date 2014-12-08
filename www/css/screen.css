@@ -52,3 +52,34 @@ form .error {
 html.js .jshidden {
 	display: none;
 }
+
+
+#map {
+    position:fixed;
+    height:100%;
+    width:100%;
+    padding:0;
+    margin:0;
+    z-index: 1;
+}
+small {color: #aaa}
+tr,td {border: 1px #aaa solid;}
+
+
+.container {
+    position: relative;
+    z-index: 5;
+    padding: 1em;
+    background: rgba(255,255,255,0.9);
+    width: 400px;
+    margin: 0 0 260px 0;
+}
+
+.fright {
+    float:right;
+}
+
+.gpx {border-top: 1px #ccc solid; margin-top: 1em;}
+.gpx .first {
+    font-size: 110%;
+}
