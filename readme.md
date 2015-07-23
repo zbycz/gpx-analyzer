@@ -1,35 +1,33 @@
-Nette Sandbox
-=============
+# gpx-analyzer - display & classify GPX traces
 
-Sandbox is a pre-packaged and pre-configured Nette Framework application
-that you can use as the skeleton for your new applications.
+ - [Czech documentation](docs/)
+ - [SQL Export with testing data](docs/database.sql) (3 MB)
 
-[Nette](http://nette.org) is a popular tool for PHP web development.
-It is designed to be the most usable and friendliest as possible. It focuses
-on security and performance and is definitely one of the safest PHP frameworks.
+## Instalation
+
+```sql
+CREATE TABLE `gpx` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_czech_ci NOT NULL,
+  `time` datetime NOT NULL,
+  `duration` int(11) NOT NULL COMMENT 'seconds',
+  `length` float NOT NULL COMMENT 'meters',
+  `ascent` float NOT NULL COMMENT 'meters',
+  `descent` float NOT NULL COMMENT 'meters',
+  `classification` text COLLATE utf8_czech_ci NOT NULL,
+  `gpx` longtext COLLATE utf8_czech_ci NOT NULL COMMENT 'XML',
+  `points` text COLLATE utf8_czech_ci NOT NULL COMMENT 'JSON',
+  PRIMARY KEY (`id`)
+)
+```
+
+## Screenshot
+
+![](docs/screenshot.png)
 
 
-Installing
-----------
+## Author and licence
 
-The best way to install Sandbox is using Composer. If you don't have Composer yet, download
-it following [the instructions](http://doc.nette.org/composer). Then use command:
+(c) 2014 [Pavel Zbytovský](http://zby.cz)
 
-		composer create-project nette/sandbox my-app
-		cd my-app
-
-Make directories `temp` and `log` writable. Navigate your browser
-to the `www` directory and you will see a welcome page. PHP 5.4 allows
-you run `php -S localhost:8888 -t www` to start the web server and
-then visit `http://localhost:8888` in your browser.
-
-It is CRITICAL that whole `app`, `log` and `temp` directories are NOT accessible
-directly via a web browser! See [security warning](http://nette.org/security-warning).
-
-
-License
--------
-- Nette: New BSD License or GPL 2.0 or 3.0 (http://nette.org/license)
-- jQuery: MIT License (https://jquery.org/license)
-- Adminer: Apache License 2.0 or GPL 2 (http://www.adminer.org)
-- Sandbox: The Unlicense (http://unlicense.org)
+Licenced under MIT license.

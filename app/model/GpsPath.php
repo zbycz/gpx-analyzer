@@ -9,7 +9,7 @@ use Nette\Utils\DateTime;
 class GpsPath extends Object
 {
 
-	private $points = array();
+	public $points = array();
 
 	public function __construct($gpx)
 	{

@@ -27,6 +27,7 @@ class HomepagePresenter extends BasePresenter
 	{
 		$gpxs = $this->database->query('SELECT * FROM gpx ORDER BY time DESC')->fetchAll();
 
+		$points = 0;
 		foreach ($gpxs as $r)
 		{
 			$path = new GpsPath($r->gpx);
@@ -41,7 +42,9 @@ class HomepagePresenter extends BasePresenter
 				'points' => json_encode($path->getLatLons()),
 			), 'WHERE id = ?', $r->id);
 
+			$points += count($path->points);
 		}
+		echo "points: $points<br>";
 
 		$this->terminate();
 	}
